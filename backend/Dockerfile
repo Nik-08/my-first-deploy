@@ -11,8 +11,13 @@ FROM node:20-alpine as prod
 
 WORKDIR /app
 
+COPY package.json /app
+COPY yarn.lock /app
+
+RUN yarn install --frozen-lockfile --production
+
 COPY --from=build /app/dist /app/dist
 
 EXPOSE 8000
 
-CMD ['node', 'dist/main.js']
+CMD ["node", "dist/main.js"]

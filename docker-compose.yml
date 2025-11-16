@@ -13,5 +13,6 @@ services:
       - ./nginx:/root/.ssl/
 
   backend:
-    image: nikdev08/my-backend-sema-huesos
+    # image: nikdev08/my-backend-sema-huesos
     container_name: backend-deploy
+    build: ./backend
