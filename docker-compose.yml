@@ -11,3 +11,7 @@ services:
     volumes:
       - ./nginx/prod.conf:/etc/nginx/nginx.conf
       - ./nginx:/root/.ssl/
+
+  backend:
+    image:
+    container_name: backend-deploy
