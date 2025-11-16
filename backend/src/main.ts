@@ -6,38 +6,38 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-    }),
-  );
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     whitelist: true,
+  //     forbidNonWhitelisted: true,
+  //     transform: true,
+  //   }),
+  // );
 
-  app.enableCors({
-    origin: true,
-    credentials: true,
-  });
+  // app.enableCors({
+  //   origin: true,
+  //   credentials: true,
+  // });
 
-  const config = new DocumentBuilder()
-    .setTitle('TO-DO API')
-    .setDescription('API для управления TO-DO задачами с аутентификацией')
-    .setVersion('1.0')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
-        in: 'header',
-      },
-      'JWT-auth',
-    )
-    .build();
+  // const config = new DocumentBuilder()
+  //   .setTitle('TO-DO API')
+  //   .setDescription('API для управления TO-DO задачами с аутентификацией')
+  //   .setVersion('1.0')
+  //   .addBearerAuth(
+  //     {
+  //       type: 'http',
+  //       scheme: 'bearer',
+  //       bearerFormat: 'JWT',
+  //       name: 'JWT',
+  //       description: 'Enter JWT token',
+  //       in: 'header',
+  //     },
+  //     'JWT-auth',
+  //   )
+  //   .build();
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('api', app, document);
 
   const port = process.env.PORT || 8000;
   await app.listen(port);
